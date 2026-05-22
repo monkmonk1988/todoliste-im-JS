@@ -8,19 +8,22 @@ addTaskButton.addEventListener("click", function () {
     return;
   } else {
     const taskItem = document.createElement("li");
-    taskItem.textContent = taskInput.value;
+    const taskText = document.createElement("span");
+    taskText.textContent = taskInput.value;
+    taskItem.appendChild(taskText);
     const deleteButton = document.createElement("button");
     const readyButton = document.createElement("button");
     deleteButton.textContent = "löschen";
+    deleteButton.classList.add("loeschen");
     readyButton.textContent = "erledigt";
     deleteButton.addEventListener("click", function () {
       taskList.removeChild(taskItem);
     });
     readyButton.addEventListener("click", function () {
-      if (taskItem.style.textDecoration === "line-through") {
-        taskItem.style.textDecoration = "none";
+      if (taskText.style.textDecoration === "line-through") {
+        taskText.style.textDecoration = "none";
       } else {
-        taskItem.style.textDecoration = "line-through";
+        taskText.style.textDecoration = "line-through";
       }
     });
     taskItem.appendChild(deleteButton);
